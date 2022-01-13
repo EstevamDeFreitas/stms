@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+:root{
+    --blue-primary: #0E153A;
+}
+
+.central-card-sizing{
+    max-width: 35rem !important;
+    min-width: 1rem !important;
+    max-height: 30rem !important;
+}
+
+.background-degrade{
+    background: linear-gradient(#253278, var(--blue-primary));
+}

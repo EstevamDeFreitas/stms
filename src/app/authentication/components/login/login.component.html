@@ -1,0 +1,15 @@
+<div class="vw-100 vh-100 position-relative background-degrade">
+    <div class="card central-card-sizing position-absolute top-50 start-50 translate-middle w-100 h-100">
+        <div class="card-body central-card-sizing p-5 d-grid gap-5">
+            <h4 class="card-title">Login</h4>
+            <div class="mb-3">
+                <label for="tokenInput" class="form-label">Token:</label>
+                <input type="text" class="form-control" id="tokenInput" [formControl]="token" required>
+            </div>
+            <div class="d-grid gap-2 col-12 mx-auto">
+                <button class="btn btn-primary" (click)="verifyUser()" type="button">Sign in</button>
+                <button type="button" class="btn btn-link btn-sm">Don't have a token? create one now!</button>
+            </div>
+        </div>
+    </div>
+</div>
