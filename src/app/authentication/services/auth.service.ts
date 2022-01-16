@@ -21,4 +21,8 @@ export class AuthService {
   static setToken(token : string){
     localStorage.setItem('token', token);
   }
+
+  createUser(username: string) : Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}users/${username}/claim`,null);
+  }
 }

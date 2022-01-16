@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/components/login/login.component';
 import { AuthInterceptor } from './authentication/services/auth.interceptor';
 import { NavbarComponent } from './dashboard/components/shared/navbar/navbar.component';
+import { CreateTokenComponent } from './authentication/components/create-token/create-token.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateTokenComponent
   ],
   imports: [
     BrowserModule,

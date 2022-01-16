@@ -1,0 +1,30 @@
+<div class="vw-100 vh-100 position-relative background-degrade">
+    <img src="../../../../assets/logologo.svg" class="mt-4 ms-5" alt="">
+    <div *ngIf="!tokenCreated;" class="card central-card-sizing position-absolute top-50 start-50 translate-middle w-100 h-100">
+        <div class="card-body central-card-sizing p-5 d-grid gap-5">
+            <h4 class="card-title">Create your Token</h4>
+            <div class="mb-3">
+                <label for="tokenInput" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="tokenInput" [formControl]="username" required>
+                <div id="loginError" class="form-text red-txt" *ngIf="error != ''">Username already in use</div>
+            </div>
+            <div class="d-grid gap-2 col-12 mx-auto">
+                <button class="btn btn-primary" style="height: 2.375rem;" (click)="createToken()" type="button">Create my Token</button>
+                <a routerLink="" class="btn btn-link btn-sm" style="height: 2.375rem;" type="button">I already have a token</a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tokenCreated" class="card central-card-sizing position-absolute top-50 start-50 translate-middle w-100 h-100">
+        <div class="card-body central-card-sizing p-5 d-grid gap-5">
+            <h4 class="card-title">Token generated successfully!</h4>
+            <div class="mb-3">
+                <label for="tokenInput" class="form-label primary">Your token is:</label>
+                <div class="blue-txt">{{token}}</div>
+                <div id="warning" class="form-text red-txt">Please copy your token and save it, there is no way to recover it if lost.</div>
+            </div>
+            <div class="d-grid gap-2 col-12 mx-auto">
+                <a routerLink="/dashboard" class="btn btn-primary" style="height: 2.375rem;" type="button">Sign in</a>
+            </div>
+        </div>
+    </div>
+</div>

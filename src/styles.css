@@ -3,6 +3,8 @@
 
 :root{
     --blue-primary: #0E153A;
+    --blue-text: #0b5ed7;
+    --red-primary: #F13D3D;
 }
 
 .central-card-sizing{
@@ -13,4 +15,12 @@
 
 .background-degrade{
     background: linear-gradient(#253278, var(--blue-primary));
+}
+
+.red-txt{
+    color: var(--red-primary);
+}
+
+.blue-txt{
+    color: var(--blue-text);
 }
