@@ -1,1 +1,15 @@
-<p>navbar works!</p>
+
+<div class="d-flex">
+    <div class="d-grid gap-5 flex-column vh-100 flex-shrink-0 p-3 text-white bg-blue" style="width: 17rem;">
+        <img src="../../../../assets/logologo.svg" class="" alt="">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item mb-2"><a routerLink="./" class="nav-link text-white align-middle" [routerLinkActive]="'active-route'"><img class="router-link-img" src="../../../../../assets/home_white_24dp.svg" alt="">Home</a></li>
+            <li class="nav-item mb-2"><a routerLink="./ships" class="nav-link text-white" [routerLinkActive]="'active-route'"><img class="router-link-img" src="../../../../../assets/rocket_launch_white_24dp.svg" alt="">Ships</a></li>
+            <li class="nav-item mb-2"><a routerLink="./systems" class="nav-link text-white" [routerLinkActive]="'active-route'"><img class="router-link-img" src="../../../../../assets/light_mode_white_24dp.svg" alt="">Systems</a></li>
+            <li class="nav-item mb-2"><a routerLink="./structures" class="nav-link text-white" [routerLinkActive]="'active-route'"><img class="router-link-img" src="../../../../../assets/business_white_24dp.svg" alt="">Structures</a></li>
+            <li class="nav-item mb-2"><a routerLink="./loans" class="nav-link text-white" [routerLinkActive]="'active-route'"><img class="router-link-img" src="../../../../../assets/account_balance_white_24dp.svg" alt="">Loans</a></li>
+        </ul>
+        <button class="btn text-white" style="height: 2.375rem;"><img src="../../../../../assets/logout_white_24dp.svg" alt=""> Log Out</button>
+    </div>
+    <div>teste</div>
+</div>  

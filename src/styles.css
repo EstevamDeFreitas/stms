@@ -5,6 +5,7 @@
     --blue-primary: #0E153A;
     --blue-text: #0b5ed7;
     --red-primary: #F13D3D;
+    --black: #212121;
 }
 
 .central-card-sizing{
@@ -13,8 +14,12 @@
     max-height: 30rem !important;
 }
 
-.background-degrade{
+.bg-degrade{
     background: linear-gradient(#253278, var(--blue-primary));
+}
+
+.bg-blue{
+    background: var(--blue-primary);
 }
 
 .red-txt{
@@ -23,4 +28,17 @@
 
 .blue-txt{
     color: var(--blue-text);
+}
+
+.active-route{ 
+    color: var(--black) !important;
+    background: white !important;
+}
+
+.active-route img{
+    filter: brightness(0%) saturate(100%)
+}
+
+.router-link-img{
+    margin-right: 10px;
 }

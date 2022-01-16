@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   verifyUser(){
     AuthService.setToken(this.token.value);
     this.authService.getUser().subscribe({
-      next: (n) => this.router.navigate(['dashboard']),
+      next: (n) => this.router.navigate(['home']),
       error: (e) => { this.error = e.error.error.message;
       }
     })
