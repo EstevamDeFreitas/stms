@@ -1,58 +1,29 @@
 <div class="page border">
     <div class="page-h">
         <h2>My Ships</h2>
+        <a type="button" class="btn btn-lg btn-primary">Buy</a>
     </div>
     
     <div class="page-t">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Max Cargo</th>
+                    <th scope="col">Space Available</th>
+                    <th scope="col">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="select-line" (click)="openDetails(ship.id)" *ngFor="let ship of ships">
+                    <td>{{ship.type}}</td>
+                    <td>{{ship.class}}</td>
+                    <td>{{ship.maxCargo}}</td>
+                    <td>{{ship.spaceAvailable}}</td>
+                    <td>{{ship.location}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { CreateTokenComponent } from './authentication/components/create-token/c
 import { LoginComponent } from './authentication/components/login/login.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { NavbarComponent } from './dashboard/components/shared/navbar/navbar.component';
+import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-detail.component';
 import { ShipsComponent } from './dashboard/components/ships/ships.component';
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: "home", component: NavbarComponent, children: [
     {path: "", redirectTo: 'dashboard', pathMatch: 'full'},
     {path: "dashboard", component: DashboardComponent},
-    {path: "ships", component: ShipsComponent}
+    {path: "ships", component: ShipsComponent},
+    {path: "ships/:id", component: ShipDetailComponent}
   ]}
 ];
 

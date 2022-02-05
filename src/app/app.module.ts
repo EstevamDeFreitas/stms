@@ -11,6 +11,7 @@ import { NavbarComponent } from './dashboard/components/shared/navbar/navbar.com
 import { CreateTokenComponent } from './authentication/components/create-token/create-token.component';
 import { ShipsComponent } from './dashboard/components/ships/ships.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
+import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DashboardComponent } from './dashboard/components/dashboard/dashboard.c
     NavbarComponent,
     CreateTokenComponent,
     ShipsComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShipDetailComponent
   ],
   imports: [
     BrowserModule,
