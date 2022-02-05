@@ -47,3 +47,22 @@
 .router-link-img{
     margin-right: 10px;
 }
+
+.border{
+    border-radius: 20px;
+}
+
+.page{
+    background-color: white;
+    padding: 2.5rem;
+    height: clamp(20rem, 100%, 40rem);
+}
+
+.page-h{
+    margin-bottom: 2.5rem;
+}
+
+.page-t{
+    overflow-y: auto;
+    height: 80%;
+}
