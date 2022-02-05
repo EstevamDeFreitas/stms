@@ -1,6 +1,6 @@
 
-<div class="d-flex">
-    <div class="d-grid gap-5 flex-column vh-100 flex-shrink-0 p-3 text-white bg-blue" style="width: 17rem;">
+<div class="position-relative vh-100" style="overflow-y: hidden;">
+    <div class="d-grid gap-5 flex-column vh-100 flex-shrink-0 p-3 text-white bg-blue" style="width: 17rem; position: absolute; top: 0; z-index: 1; overflow-y: auto;">
         <img src="../../../../assets/logologo.svg" class="" alt="">
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item mb-2"><a routerLink="./dashboard" class="nav-link text-white align-middle" [routerLinkActive]="'active-route'"><img class="router-link-img" src="../../../../../assets/home_white_24dp.svg" alt="">Home</a></li>
@@ -11,10 +11,17 @@
         </ul>
         <button class="btn text-white" style="height: 2.375rem;"><img src="../../../../../assets/logout_white_24dp.svg" alt=""> Log Out</button>
     </div>
-    <div class="w-100 vh-100" style="background-color: rgb(236, 236, 236);">
-        
-        <div class="p-5 w-100 h-100">
-            <router-outlet></router-outlet>
+    <div class="w-100 h-100" style="background-color: rgb(236, 236, 236);">
+        <div class="navbar p-4 border-bottom position-sticky top-0" style="background-color: white;">
+            <div></div>
+            <div>
+                <h5 class="d-inline m-3">{{username}}</h5>
+                <h5 class="d-inline m-3 green-txt">$ {{credits}}</h5>
+                <h5 class="d-inline m-3 red-txt">Loans $ {{loans}}</h5>
+            </div>
+        </div>
+        <div class="p-5" style="margin-left: 17rem; height: 100%;">
+            <router-outlet (activate)="updateUserInfo()"></router-outlet>
         </div>
     </div>
 </div>  

@@ -7,7 +7,7 @@ import { UserService } from 'src/app/dashboard/services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnChanges {
+export class NavbarComponent implements OnInit {
 
   username: string = '';
 
@@ -19,10 +19,6 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.updateUserInfo();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-      this.updateUserInfo();
   }
 
   updateUserInfo(){
