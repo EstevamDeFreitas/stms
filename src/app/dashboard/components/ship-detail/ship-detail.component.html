@@ -1,1 +1,82 @@
-<p>ship-detail works!</p>
+<div class="page">
+    <div class="page-h d-flex">
+        <a type="button" routerLink="/home/ships"><img class="back-arrow" src="../../../../assets/arrow_back_white_24dp.svg" alt=""></a>
+        <h3>Ship: {{ship.type}}</h3>
+    </div>
+    <div class="page-t">
+        <div class="line-space">
+            <div class="mb-3">
+                <label for="manufacturer">Manufacturer:</label>
+                <h3 id="manufacturer">{{ship.manufacturer}}</h3>
+            </div>
+            <div class="mb-3">
+                <label for="speed">Speed:</label>
+                <h3 id="speed">{{ship.speed}}</h3>
+            </div>
+            <div class="mb-3">
+                <label for="loading">Loading speed:</label>
+                <h3 id="loading">{{ship.loadingSpeed}}</h3>
+            </div>
+            <div class="mb-3">
+                <label for="space">Max cargo:</label>
+                <h3 id="space">{{ship.maxCargo}}</h3>
+            </div>
+            <div class="mb-3">
+                <label for="plating">Plating:</label>
+                <h3 id="plating">{{ship.plating}}</h3>
+            </div>
+            <div class="mb-3">
+                <label for="weapon">Weapons:</label>
+                <h3 id="weapon">{{ship.weapons}}</h3>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="line-space">
+            <div class="mb-3">
+                <label for="weapon">Docked at:</label>
+                <h3 id="weapon">{{ship.location}}</h3>
+            </div>
+            <div *ngIf="ship.flightPlanId == '' || flightPlan.timeRemainingInSeconds == 0">
+                <a type="button" class="btn btn-lg h-auto btn-primary"><img class="button-icon" src="../../../../assets/flight_takeoff_white_24dp.svg">Create Flight Plan</a>
+            </div>
+            <div *ngIf="ship.flightPlanId != '' && flightPlan.timeRemainingInSeconds != 0">
+                <a type="button" class="btn btn-lg h-auto bg-red">Arriving in: <countdown [config]="{leftTime: flightPlan.timeRemainingInSeconds}"></countdown></a>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="line-space">
+            <div class="line-space">
+                <div class="mb-3 me-5">
+                    <label for="invent">Inventory:</label>
+                    <h3 id="invent"></h3>
+                </div>
+                <div class="mb-3">
+                    <label for="inventory">Space:</label>
+                    <h3 id="inventory">{{ship.maxCargo - ship.spaceAvailable}}/{{ship.maxCargo}}</h3>
+                </div>
+            </div>
+            <div>
+                <a type="button" class="btn btn-lg h-auto btn-primary me-3"><img class="button-icon" src="../../../../assets/shopping_cart_white_24dp.svg">Buy</a>
+                <a type="button" class="btn btn-lg h-auto btn-primary me-3"><img class="button-icon" src="../../../../assets/multiple_stop_white_24dp.svg">Transfer</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Good</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total volume</th>
+                    <td scope="col"></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let good of ship.cargo">
+                    <td>{{good.good}}</td>
+                    <td>{{good.quantity}}</td>
+                    <td>{{good.totalVolume}}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm" (click)="sellItem(good)">Sell</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

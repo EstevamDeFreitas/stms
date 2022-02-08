@@ -14,4 +14,8 @@ export class ShipService {
   getMyShips() : Observable<any>{
     return this.http.get<any>(`${environment.apiUrl}my/ships`);
   }
+
+  getShip(id : string) : Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}my/ships/${id}`);
+  }
 }

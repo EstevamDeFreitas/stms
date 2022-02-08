@@ -4,6 +4,7 @@ export class Ship{
     x : number = 0;
     y : number = 0;
     cargo : Cargo[] = [];
+    flightPlanId : string = '';
     spaceAvailable : number = 0;
     type : string = '';
     class : string = '';

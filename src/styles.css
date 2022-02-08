@@ -23,6 +23,15 @@
     background: var(--blue-primary);
 }
 
+.bg-red{
+    background: var(--red-primary);
+    color: white;
+}
+
+.bg-red :hover{
+    color: white;
+}
+
 .red-txt{
     color: var(--red-primary);
 }
@@ -54,15 +63,19 @@
 
 .page{
     background-color: white;
-    padding: 2.5rem;
+    padding-bottom: 2.5rem;
     height: clamp(20rem, 100%, 40rem);
 }
 
 .page-h{
     margin-bottom: 2.5rem;
+}
+
+.line-space{
     display: flex;
     justify-content: space-between;
 }
+
 
 .page-t{
     overflow-y: auto;
@@ -71,4 +84,15 @@
 
 .select-line :hover{
     cursor: pointer;
+}
+
+.back-arrow{
+    filter: brightness(0%) saturate(100%);
+    height: 2.5rem;
+    margin-right:  3rem;
+}
+
+.button-icon{
+    height: 2rem;
+    margin-right: 1.5rem;
 }

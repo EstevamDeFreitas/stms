@@ -13,6 +13,8 @@ import { ShipsComponent } from './dashboard/components/ships/ships.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-detail.component';
 
+import { CountdownModule } from 'ngx-countdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-det
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CountdownModule
   ],
   providers: [
     {

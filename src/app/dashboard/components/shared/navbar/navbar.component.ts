@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { timeInterval } from 'rxjs';
 import { LoanService } from 'src/app/dashboard/services/loan.service';
 import { UserService } from 'src/app/dashboard/services/user.service';
 
