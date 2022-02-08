@@ -32,15 +32,19 @@
         </div>
         <hr class="my-4">
         <div class="line-space">
-            <div class="mb-3">
+            <div class="mb-3" *ngIf="ship.flightPlanId == null">
                 <label for="weapon">Docked at:</label>
                 <h3 id="weapon">{{ship.location}}</h3>
             </div>
-            <div *ngIf="ship.flightPlanId == '' || flightPlan.timeRemainingInSeconds == 0">
+            <div class="mb-3" *ngIf="ship.flightPlanId != null && flightPlan.timeRemainingInSeconds > 0">
+                <label for="weapon">In flight to:</label>
+                <h3 id="weapon">{{flightPlan.destination}}</h3>
+            </div>
+            <div *ngIf="ship.flightPlanId == null">
                 <a type="button" class="btn btn-lg h-auto btn-primary"><img class="button-icon" src="../../../../assets/flight_takeoff_white_24dp.svg">Create Flight Plan</a>
             </div>
-            <div *ngIf="ship.flightPlanId != '' && flightPlan.timeRemainingInSeconds != 0">
-                <a type="button" class="btn btn-lg h-auto bg-red">Arriving in: <countdown [config]="{leftTime: flightPlan.timeRemainingInSeconds}"></countdown></a>
+            <div *ngIf="ship.flightPlanId != null && flightPlan.timeRemainingInSeconds > 0">
+                <a type="button" class="btn btn-lg h-auto bg-red">Arriving in: <countdown [config]="{leftTime: flightPlan.timeRemainingInSeconds}" (event)="countdownEvent($event)"></countdown></a>
             </div>
         </div>
         <hr class="my-4">
@@ -74,7 +78,7 @@
                     <td>{{good.good}}</td>
                     <td>{{good.quantity}}</td>
                     <td>{{good.totalVolume}}</td>
-                    <td><button type="button" class="btn btn-danger btn-sm" (click)="sellItem(good)">Sell</button></td>
+                    <td><button type="button" class="btn btn-danger btn-sm bg-red" (click)="sellItem(good)">Sell</button></td>
                 </tr>
             </tbody>
         </table>

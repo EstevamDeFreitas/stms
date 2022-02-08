@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CountdownEvent, CountdownEventAction } from 'ngx-countdown';
 import { FlightPlan } from '../../models/flightPlan';
 import { Selectable } from '../../models/selectable';
 import { SellOrder } from '../../models/sellOrder';
@@ -18,6 +19,8 @@ export class ShipDetailComponent implements OnInit {
   ship : Ship = new Ship();
 
   selectedGoods : Selectable[] = [];
+
+  flightDone : boolean = false;
 
   flightPlan : FlightPlan = new FlightPlan();
 
@@ -63,6 +66,17 @@ export class ShipDetailComponent implements OnInit {
       this.sellService.sellItem(sell).subscribe(res => {
         this.getShipInfo();
       });
+    }
+  }
+
+  countdownEvent(event : CountdownEvent){
+
+    let done : CountdownEventAction = 'done';
+
+    if(event.action == done){
+      this.flightDone = true;
+
+      this.getShipInfo();
     }
   }
 

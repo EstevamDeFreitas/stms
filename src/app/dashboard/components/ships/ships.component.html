@@ -21,7 +21,8 @@
                     <td>{{ship.class}}</td>
                     <td>{{ship.maxCargo}}</td>
                     <td>{{ship.spaceAvailable}}</td>
-                    <td>{{ship.location}}</td>
+                    <td *ngIf="ship.location != null">{{ship.location}}</td>
+                    <td *ngIf="ship.location == null" class="red-txt">In flight</td>
                 </tr>
             </tbody>
         </table>
