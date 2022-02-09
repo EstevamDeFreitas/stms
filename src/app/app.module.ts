@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/components/dashboard/dashboard.c
 import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-detail.component';
 
 import { CountdownModule } from 'ngx-countdown';
+import { ModalComponent } from './dashboard/components/shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CountdownModule } from 'ngx-countdown';
     CreateTokenComponent,
     ShipsComponent,
     DashboardComponent,
-    ShipDetailComponent
+    ShipDetailComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
