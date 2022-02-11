@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CountdownEvent, CountdownEventAction } from 'ngx-countdown';
 import { FlightPlan } from '../../models/flightPlan';
 import { Selectable } from '../../models/selectable';
@@ -8,6 +10,7 @@ import { Cargo, Ship } from '../../models/ship';
 import { FlightService } from '../../services/flight.service';
 import { SellService } from '../../services/sell.service';
 import { ShipService } from '../../services/ship.service';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-ship-detail',
@@ -16,20 +19,30 @@ import { ShipService } from '../../services/ship.service';
 })
 export class ShipDetailComponent implements OnInit {
 
+  @ViewChild('sellModal')
+  sellModal : ModalComponent;
+  sellSelectedGood : Cargo = new Cargo();
+  sellGoodQuantity = new FormControl('');
+
   ship : Ship = new Ship();
 
-  selectedGoods : Selectable[] = [];
-
   flightDone : boolean = false;
-
   flightPlan : FlightPlan = new FlightPlan();
+
+  
 
   constructor(
       private route : ActivatedRoute, 
       private shipService : ShipService, 
       private flightService : FlightService,
-      private sellService : SellService
-    ) { }
+      private sellService : SellService,
+      private modalService : NgbModal
+    ) {
+
+      this.sellModal = new ModalComponent(modalService);
+      this.sellGoodQuantity.setValue(1);
+
+     }
 
   ngOnInit(): void {
     this.getShipInfo();
@@ -52,21 +65,10 @@ export class ShipDetailComponent implements OnInit {
     });
   }
 
-  sellItem(good : Cargo){
-    while(good.quantity > 0){
-
-      let sell : SellOrder  = new SellOrder();
-
-      sell.shipId = this.ship.id;
-      sell.good = good.good;
-      sell.quantity = good.quantity > this.ship.loadingSpeed ? this.ship.loadingSpeed : good.quantity;
-
-      good.quantity -= good.quantity > this.ship.loadingSpeed ? this.ship.loadingSpeed : good.quantity;
-
-      this.sellService.sellItem(sell).subscribe(res => {
-        this.getShipInfo();
-      });
-    }
+  sellItem(sellGood : SellOrder){
+    this.sellService.sellItem(sellGood).subscribe(res => {
+      this.getShipInfo();
+    });
   }
 
   countdownEvent(event : CountdownEvent){
@@ -78,6 +80,26 @@ export class ShipDetailComponent implements OnInit {
 
       this.getShipInfo();
     }
+  }
+
+  openSellModal(good : Cargo){
+    this.sellSelectedGood = good;
+
+    this.sellModal.open();
+  }
+
+  sellEventHandler(){
+    let sellGood = new SellOrder();
+
+    sellGood.good = this.sellSelectedGood.good;
+    sellGood.quantity = this.sellGoodQuantity.value;
+    sellGood.shipId = this.ship.id;
+
+    this.sellItem(sellGood);
+  }
+
+  maxSellInput(){
+    this.sellGoodQuantity.setValue(this.sellSelectedGood.quantity > this.ship.maxCargo ? this.ship.maxCargo : this.sellSelectedGood.quantity);
   }
 
 }

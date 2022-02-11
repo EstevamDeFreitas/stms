@@ -2,13 +2,15 @@ import { Component, Input, OnInit, TemplateRef, ViewChild, Output, EventEmitter 
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
 
   @Input() title = '';
+
+  @Input() buttonTitle = '';
 
   @Output() saveEvent = new EventEmitter<string>();
 
@@ -24,27 +26,13 @@ export class ModalComponent implements OnInit {
 
   open(){
     this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result)=>{
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) =>{
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`
-    })
-  }
 
-  private getDismissReason(reason : any):string{
-    if(reason == ModalDismissReasons.ESC){
-      return 'By pressing ESC';
-    }
-    else if(reason == ModalDismissReasons.BACKDROP_CLICK){
-      return 'by clicking on backdrop';
-    }
-    else{
-      return `with: ${reason}`;
-    }
+    }, (reason) =>{
+
+    });
   }
 
   save(){
-    console.log("Save event");
-    
     this.saveEvent.emit("Save");
   }
 
