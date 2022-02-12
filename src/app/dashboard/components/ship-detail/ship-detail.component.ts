@@ -4,10 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CountdownEvent, CountdownEventAction } from 'ngx-countdown';
 import { FlightPlan } from '../../models/flightPlan';
+import { GoodMarket } from '../../models/goodMarket';
 import { Selectable } from '../../models/selectable';
 import { SellOrder } from '../../models/sellOrder';
 import { Cargo, Ship } from '../../models/ship';
 import { FlightService } from '../../services/flight.service';
+import { LocationService } from '../../services/location.service';
 import { SellService } from '../../services/sell.service';
 import { ShipService } from '../../services/ship.service';
 import { ModalComponent } from '../shared/modal/modal.component';
@@ -29,20 +31,22 @@ export class ShipDetailComponent implements OnInit {
   flightDone : boolean = false;
   flightPlan : FlightPlan = new FlightPlan();
 
-  
+  market : Array<GoodMarket> = new Array<GoodMarket>();
 
   constructor(
       private route : ActivatedRoute, 
       private shipService : ShipService, 
       private flightService : FlightService,
       private sellService : SellService,
-      private modalService : NgbModal
-    ) {
+      private modalService : NgbModal,
+      private locationServie : LocationService
+    ) 
+  {
 
-      this.sellModal = new ModalComponent(modalService);
-      this.sellGoodQuantity.setValue(1);
+    this.sellModal = new ModalComponent(modalService);
+    this.sellGoodQuantity.setValue(1);
 
-     }
+  }
 
   ngOnInit(): void {
     this.getShipInfo();
@@ -60,6 +64,13 @@ export class ShipDetailComponent implements OnInit {
           this.flightService.getFlightPlan(this.ship.flightPlanId).subscribe(res => {
             this.flightPlan = res.flightPlan;
           })
+        }
+        else{
+          this.locationServie.getMarketPlaceInfo(this.ship.location).subscribe(res =>{
+            this.market = res.marketplace;
+            console.log(this.market);
+            
+          });
         }
       });
     });
@@ -100,6 +111,10 @@ export class ShipDetailComponent implements OnInit {
 
   maxSellInput(){
     this.sellGoodQuantity.setValue(this.sellSelectedGood.quantity > this.ship.maxCargo ? this.ship.maxCargo : this.sellSelectedGood.quantity);
+  }
+
+  getGoodMarketValueFromArray(goodSymbol : string):any{
+    return this.market.find(x => x.symbol == goodSymbol)?.sellPricePerUnit;
   }
 
 }
