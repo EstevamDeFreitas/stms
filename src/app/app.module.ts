@@ -15,6 +15,7 @@ import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-det
 
 import { CountdownModule } from 'ngx-countdown';
 import { ModalComponent } from './dashboard/components/shared/modal/modal.component';
+import { ShipTravelComponent } from './dashboard/components/ship-travel/ship-travel.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ModalComponent } from './dashboard/components/shared/modal/modal.compon
     ShipsComponent,
     DashboardComponent,
     ShipDetailComponent,
-    ModalComponent
+    ModalComponent,
+    ShipTravelComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { LoginComponent } from './authentication/components/login/login.componen
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { NavbarComponent } from './dashboard/components/shared/navbar/navbar.component';
 import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-detail.component';
+import { ShipTravelComponent } from './dashboard/components/ship-travel/ship-travel.component';
 import { ShipsComponent } from './dashboard/components/ships/ships.component';
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
     {path: "", redirectTo: 'dashboard', pathMatch: 'full'},
     {path: "dashboard", component: DashboardComponent},
     {path: "ships", component: ShipsComponent},
-    {path: "ships/:id", component: ShipDetailComponent}
+    {path: "ships/:id", component: ShipDetailComponent},
+    {path: "ships/travel/:id", component: ShipTravelComponent}
   ]}
 ];
 
