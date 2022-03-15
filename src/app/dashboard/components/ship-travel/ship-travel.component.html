@@ -1,6 +1,37 @@
 <div class="page">
   <div class="page-h d-flex">
-    <a type="button" routerLink="/home/ships"><img class="back-arrow" src="../../../../assets/arrow_back_white_24dp.svg" alt=""></a>
+    <a type="button" [routerLink]="['/home/ships/',ship.id]"><img class="back-arrow" src="../../../../assets/arrow_back_white_24dp.svg" alt=""></a>
     <h3>New Flight Plan</h3>
+    <h3 class="ms-5">Ship: {{ship.type}}</h3>
+  </div>
+  <div class="page-t">
+    <div class="mb-3">
+      <label for="search" class="form-label">System symbol</label>
+      <div class="w-25">
+        <input type="text" [formControl]="searchTerm" class="form-control" id="search" (keyup.enter)="search()">
+        <div class="form-text red-txt">{{error}}</div>
+      </div>
+    </div>
+    <div *ngIf="availableLocations.length != 0">
+      <label for="locations">Available Locations</label>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Allows Contruction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let location of availableLocations">
+            <td>{{location.symbol}}</td>
+            <td>{{location.type}}</td>
+            <td>{{location.name}}</td>
+            <td>{{location.allowsConstruction}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

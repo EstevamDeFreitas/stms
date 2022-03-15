@@ -34,13 +34,13 @@ export class ShipDetailComponent implements OnInit {
   market : Array<GoodMarket> = new Array<GoodMarket>();
 
   constructor(
-      private route : ActivatedRoute, 
-      private shipService : ShipService, 
+      private route : ActivatedRoute,
+      private shipService : ShipService,
       private flightService : FlightService,
       private sellService : SellService,
       private modalService : NgbModal,
       private locationServie : LocationService
-    ) 
+    )
   {
 
     this.sellModal = new ModalComponent(modalService);
@@ -68,8 +68,7 @@ export class ShipDetailComponent implements OnInit {
         else{
           this.locationServie.getMarketPlaceInfo(this.ship.location).subscribe(res =>{
             this.market = res.marketplace;
-            console.log(this.market);
-            
+
           });
         }
       });
