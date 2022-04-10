@@ -1,0 +1,28 @@
+<div class="page">
+  <div class="page-h line-space">
+      <h3>My Loans</h3>
+      <a type="button" class="btn btn-primary">Take a new loan</a>
+  </div>
+
+  <div class="page-t">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col">Due in</th>
+          <th scope="col">Status</th>
+          <th scope="col">Repayment Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="select-line" (click)="select(loan.id)" *ngFor="let loan of myLoans">
+          <td>{{loan.type}}</td>
+          <td>{{loan.due | date: "MM/dd/yyyy"}}</td>
+          <td>{{loan.status}}</td>
+          <td>{{loan.repaymentAmount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -44,7 +44,11 @@
     color: var(--green);
 }
 
-.active-route{ 
+.white-txt{
+  color: white;
+}
+
+.active-route{
     color: var(--black) !important;
     background: white !important;
 }
@@ -79,11 +83,12 @@
 
 .page-t{
     overflow-y: auto;
-    height: 80%;
+    height: 75%;
 }
 
 .select-line :hover{
     cursor: pointer;
+    background-color: #0b5ed7;
 }
 
 .back-arrow{
