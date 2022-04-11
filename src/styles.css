@@ -3,7 +3,8 @@
 
 :root{
     --blue-primary: #0E153A;
-    --blue-text: #0b5ed7;
+    --blue-text: #0d6efd;
+    --blue-light: #7ba9ee;
     --red-primary: #F13D3D;
     --black: #212121;
     --green: #156B13;
@@ -88,7 +89,11 @@
 
 .select-line :hover{
     cursor: pointer;
-    background-color: #0b5ed7;
+}
+
+.selected-line{
+    background-color: var(--blue-text) !important;
+    color: white !important;
 }
 
 .back-arrow{

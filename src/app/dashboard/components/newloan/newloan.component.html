@@ -1,0 +1,39 @@
+<div class="page">
+  <div class="page-h d-flex">
+    <a type="button" routerLink="/home/loans"><img src="../../../../assets/arrow_back_white_24dp.svg" alt="" class="back-arrow"></a>
+    <h3>Take a loan</h3>
+  </div>
+
+  <div class="page-t">
+    <h4>Available loans</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col">Time to repayment</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Rate</th>
+          <th scope="col">Repayment total</th>
+          <th scope="col">Colateral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="select-line" [ngClass]="this.selectedLoan === loan? 'selected-line' : ''" (click)="select(loan)" *ngFor="let loan of availableLoans">
+          <td>{{loan.type}}</td>
+          <td>{{loan.termInDays}}</td>
+          <td>{{loan.amount}}</td>
+          <td>{{loan.rate}}</td>
+          <td>{{loan.amount + (loan.amount * (loan.rate * 0.01))}}</td>
+          <td>{{loan.collateralRequired}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <config-bar *ngIf="this.selectedLoan != null" [button]="'Take'" (buttonClicked)="takeLoan(this.selectedLoan.type)">
+    <p class="fs-5">{{this.selectedLoan.type}}</p>
+    <p class="fs-5">Amount: {{this.selectedLoan.amount}}</p>
+    <p class="fs-5">Payment: {{this.selectedLoan.amount + (this.selectedLoan.amount * (this.selectedLoan.rate * 0.01))}}</p>
+    <p class="fs-5">Due in: {{loanMaxDate(this.selectedLoan.termInDays) | date:'MMM dd yyyy'}}</p>
+  </config-bar>
+</div>

@@ -18,6 +18,7 @@ import { ModalComponent } from './dashboard/components/shared/modal/modal.compon
 import { ShipTravelComponent } from './dashboard/components/ship-travel/ship-travel.component';
 import { ConfigBarComponent } from './dashboard/components/shared/config-bar/config-bar.component';
 import { LoansComponent } from './dashboard/components/loans/loans.component';
+import { NewloanComponent } from './dashboard/components/newloan/newloan.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoansComponent } from './dashboard/components/loans/loans.component';
     ModalComponent,
     ShipTravelComponent,
     ConfigBarComponent,
-    LoansComponent
+    LoansComponent,
+    NewloanComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { CreateTokenComponent } from './authentication/components/create-token/c
 import { LoginComponent } from './authentication/components/login/login.component';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { LoansComponent } from './dashboard/components/loans/loans.component';
+import { NewloanComponent } from './dashboard/components/newloan/newloan.component';
 import { NavbarComponent } from './dashboard/components/shared/navbar/navbar.component';
 import { ShipDetailComponent } from './dashboard/components/ship-detail/ship-detail.component';
 import { ShipTravelComponent } from './dashboard/components/ship-travel/ship-travel.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
     {path: "ships", component: ShipsComponent},
     {path: "ships/:id", component: ShipDetailComponent},
     {path: "ships/travel/:id", component: ShipTravelComponent},
-    {path: "loans", component: LoansComponent}
+    {path: "loans", component: LoansComponent},
+    {path: "loans/available", component: NewloanComponent}
   ]}
 ];
 

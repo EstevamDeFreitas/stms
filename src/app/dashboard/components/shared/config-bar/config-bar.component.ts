@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'config-bar',
@@ -8,10 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ConfigBarComponent implements OnInit {
 
   @Input() button : string = '';
+  @Output() buttonClicked = new EventEmitter<string>();
+
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onButtonClicked(){
+    this.buttonClicked.emit("Click");
   }
 
 }

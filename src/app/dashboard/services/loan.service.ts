@@ -13,4 +13,12 @@ export class LoanService {
   getMyLoans(): Observable<any>{
     return this.http.get(`${environment.apiUrl}my/loans`)
   }
+
+  getAvailableLoans(): Observable<any>{
+    return this.http.get(`${environment.apiUrl}types/loans`)
+  }
+
+  takeALoan(type : string) : Observable<any>{
+    return this.http.post<null>(`${environment.apiUrl}my/loans?type=${type}`,null);
+  }
 }
