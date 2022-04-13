@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Ship } from '../../models/ship';
 import { ShipService } from '../../services/ship.service';
 import { Location } from '../../models/location';
 import { SystemService } from '../../services/system.service';
+import { OperationSucceded } from '../../models/onOperationSucceded';
 
 @Component({
   selector: 'app-ship-travel',
@@ -12,7 +13,6 @@ import { SystemService } from '../../services/system.service';
   styleUrls: ['./ship-travel.component.css']
 })
 export class ShipTravelComponent implements OnInit {
-
   ship : Ship = new Ship();
   shipId : string = '';
 
@@ -22,7 +22,11 @@ export class ShipTravelComponent implements OnInit {
 
   error:string = '';
 
-  constructor(private shipService : ShipService, private route : ActivatedRoute, private systemService : SystemService) { }
+  @Output() operationSucceded = new EventEmitter<string>();
+
+  constructor(private shipService : ShipService, private route : ActivatedRoute, private systemService : SystemService) {
+
+  }
 
   ngOnInit(): void {
 

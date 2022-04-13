@@ -1,13 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CountdownEvent, CountdownEventAction } from 'ngx-countdown';
 import { FlightPlan } from '../../models/flightPlan';
 import { GoodMarket } from '../../models/goodMarket';
+import { OperationSucceded } from '../../models/onOperationSucceded';
 import { Selectable } from '../../models/selectable';
 import { SellOrder } from '../../models/sellOrder';
 import { Cargo, Ship } from '../../models/ship';
+import { CommonTasksService } from '../../services/common-tasks.service';
 import { FlightService } from '../../services/flight.service';
 import { LocationService } from '../../services/location.service';
 import { SellService } from '../../services/sell.service';
@@ -26,6 +28,8 @@ export class ShipDetailComponent implements OnInit {
   sellSelectedGood : Cargo = new Cargo();
   sellGoodQuantity = new FormControl('');
 
+  @Output() operationSucceded = new EventEmitter<string>();
+
   ship : Ship = new Ship();
 
   flightDone : boolean = false;
@@ -39,10 +43,10 @@ export class ShipDetailComponent implements OnInit {
       private flightService : FlightService,
       private sellService : SellService,
       private modalService : NgbModal,
-      private locationServie : LocationService
+      private locationServie : LocationService,
+      private commonTasksServices : CommonTasksService
     )
   {
-
     this.sellModal = new ModalComponent(modalService);
     this.sellGoodQuantity.setValue(1);
 
@@ -78,6 +82,7 @@ export class ShipDetailComponent implements OnInit {
   sellItem(sellGood : SellOrder){
     this.sellService.sellItem(sellGood).subscribe(res => {
       this.getShipInfo();
+      this.OnOperationSucceded();
     });
   }
 
@@ -114,6 +119,10 @@ export class ShipDetailComponent implements OnInit {
 
   getGoodMarketValueFromArray(goodSymbol : string):any{
     return this.market.find(x => x.symbol == goodSymbol)?.sellPricePerUnit;
+  }
+
+  OnOperationSucceded(): void {
+    this.commonTasksServices.sendTask("operationSucceded");
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { OperationSucceded } from '../../models/onOperationSucceded';
 import { Ship } from '../../models/ship';
 import { ShipService } from '../../services/ship.service';
 
@@ -12,8 +13,7 @@ export class ShipsComponent implements OnInit {
 
   ships : Ship[] = [];
 
-  constructor(private shipService : ShipService, private router : Router, private route : ActivatedRoute) { 
-
+  constructor(private shipService : ShipService, private router : Router, private route : ActivatedRoute) {
   }
 
   ngOnInit(): void {

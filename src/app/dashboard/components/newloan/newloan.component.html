@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page position-relative">
   <div class="page-h d-flex">
     <a type="button" routerLink="/home/loans"><img src="../../../../assets/arrow_back_white_24dp.svg" alt="" class="back-arrow"></a>
     <h3>Take a loan</h3>
@@ -31,9 +31,9 @@
   </div>
 
   <config-bar *ngIf="this.selectedLoan != null" [button]="'Take'" (buttonClicked)="takeLoan(this.selectedLoan.type)">
-    <p class="fs-5">{{this.selectedLoan.type}}</p>
-    <p class="fs-5">Amount: {{this.selectedLoan.amount}}</p>
-    <p class="fs-5">Payment: {{this.selectedLoan.amount + (this.selectedLoan.amount * (this.selectedLoan.rate * 0.01))}}</p>
-    <p class="fs-5">Due in: {{loanMaxDate(this.selectedLoan.termInDays) | date:'MMM dd yyyy'}}</p>
+    <p class="fs-6">{{this.selectedLoan.type}}</p>
+    <p class="fs-6">Amount: {{this.selectedLoan.amount}}</p>
+    <p class="fs-6">Payment: {{this.selectedLoan.amount + (this.selectedLoan.amount * (this.selectedLoan.rate * 0.01))}}</p>
+    <p class="fs-6">Due in: {{loanMaxDate(this.selectedLoan.termInDays) | date:'MMM dd yyyy'}}</p>
   </config-bar>
 </div>

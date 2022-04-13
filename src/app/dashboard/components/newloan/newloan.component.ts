@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AvailableLoan } from '../../models/loan';
+import { OperationSucceded } from '../../models/onOperationSucceded';
+import { CommonTasksService } from '../../services/common-tasks.service';
 import { LoanService } from '../../services/loan.service';
 
 @Component({
@@ -8,11 +11,16 @@ import { LoanService } from '../../services/loan.service';
   styleUrls: ['./newloan.component.css']
 })
 export class NewloanComponent implements OnInit {
+  @Output('operationSucceded') operationSucceded = new EventEmitter<string>();
 
   public availableLoans : Array<AvailableLoan> = new Array<AvailableLoan>();
   public selectedLoan !: AvailableLoan;
 
-  constructor(private loanService : LoanService) { }
+
+
+  constructor(private loanService : LoanService, private commonTasksServices : CommonTasksService) {
+
+  }
 
   ngOnInit(): void {
     this.getAvailableLoans();
@@ -39,7 +47,14 @@ export class NewloanComponent implements OnInit {
   }
 
   takeLoan(type : string){
-    this.loanService.takeALoan(type).subscribe();
+    this.loanService.takeALoan(type).subscribe(res =>{
+      this.OnOperationSucceded();
+      this.commonTasksServices.sendTask("operationSucceded")
+    });
+  }
+
+  OnOperationSucceded(): void {
+    this.operationSucceded.emit("operationSucceded");
   }
 
 }
